@@ -3,8 +3,16 @@ import Message from "./Message";
 
 export default class MessageField extends React.Component {
     state = {
-        messages: ["Привет!", "Как дела?"]
+        messages: ["Привет!", "Как дела?"],
+        authors: ["Me", "Robot"],
     };
+
+    componentDidUpdate() {
+        if (this.state.messages.length % 2 ===1 ) { setTimeout(() => 
+        this.setState(
+            { messages: [ ...this.state.messages, 'Не приставай ко мне, я робот!'] }
+        ), 1000);}
+    }
 
     handleClick = () => {
         this.setState({ messages: [ ...this.state.messages, 'Нормально'] });
