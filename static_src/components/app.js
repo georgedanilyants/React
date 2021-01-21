@@ -2,7 +2,6 @@ import React, {useEffect, useState, useCallback} from "react";
 
 import Message from "./message";
 import Input from "./input";
-
 export default function App() {
     const [messages, setMessages] = useState([
         {text: "message1", author: "me"},
