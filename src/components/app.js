@@ -1,7 +1,8 @@
 import React, {useEffect, useState, useCallback} from "react";
-
 import Message from "./message";
 import Input from "./input";
+import "../styles/styles.css"
+
 export default function App() {
     const [messages, setMessages] = useState([
         {text: "message1", author: "me"},
@@ -31,8 +32,12 @@ export default function App() {
     
     return (
         <>
-            {messages.map(renderMessage)}
-            <Input onAddMessage={handleAddMessage} />
+            <div className="layout">
+                <div className="message-field">
+                    {messages.map(renderMessage)}
+                </div>
+                <Input onAddMessage={handleAddMessage} />
+            </div>
         </>
     );
 }
