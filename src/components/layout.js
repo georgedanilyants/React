@@ -1,9 +1,11 @@
 import React, {useEffect, useState, useCallback} from "react";
 import Message from "./message";
 import Input from "./input";
+import ChatList from "./chatlist.jsx";
+import Header from "./header.jsx";
 import "../styles/styles.css"
 
-export default function App() {
+export default function Layout () {
     const [messages, setMessages] = useState([
         {text: "message1", author: "me"},
         {text: "message2", author: "me"},
@@ -33,10 +35,18 @@ export default function App() {
     return (
         <>
             <div className="layout">
-                <div className="message-field">
-                    {messages.map(renderMessage)}
+                <Header chatId= {1}/>
+                <div className="layout-canvas">
+                    <div className="layout-left-side">
+                        <ChatList/>
+                    </div>
+                    <div className="layout-right-side">
+                        <div className="message-field">
+                            {messages.map(renderMessage)}
+                        </div>
+                        <Input onAddMessage={handleAddMessage} />
+                     </div>
                 </div>
-                <Input onAddMessage={handleAddMessage} />
             </div>
         </>
     );
