@@ -1,20 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { useParams } from "react-router-dom";
 
-export default class Header extends React.Component {
-    static propTypes = {
-        chatId: PropTypes.number,
-    };
+export default function Header() {
+    const {topicId} = useParams();
 
-    static defaultProps = {
-        chatId: 1,
-    };
+    return (
+        <div className="header">
+            <span style={{ fontSize: "20px"}}>Чат {topicId} </span>
+        </div>
+    )
 
-    render() {
-        return (
-            <div className="header">
-                <span style={{ fontSize: "20px"}}>Чат {this.props.chatId} </span>
-            </div>
-        )
-    }
 }

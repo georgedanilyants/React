@@ -1,19 +1,17 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, useParams } from "react-router-dom";
 import Layout from "./layout";
 
-export default class Router extends React.Component {
-    render() {
-        return (
-            <Switch>
-                <Route exact path='/' component={ Layout } />
-                <Route exact path='/chat/1/' render={ () => 
-                    <Layout chatId={ 1 } /> } />
-                <Route exact path='/chat/2/' render={ () =>
-                    <Layout chatId={ 2 } /> } />
-                <Route exact path='/chat/3/' render={ () =>
-                    <Layout chatId={ 3 } /> } />
-            </Switch>
-        )
-    }
+export default function Routes() {
+    return (
+        <>
+            <Router>
+                <Switch>
+                    <Route path='/'> <Layout/> </Route>
+                    <Route exact path='/chat/1/'> <Layout/> </Route>
+                    <Route exact path='/chat/2/'> <Layout/> </Route>
+                    <Route exact path='/chat/3/'> <Layout/> </Route>
+                </Switch>
+            </Router>
+        </>);
 }

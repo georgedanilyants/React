@@ -4,8 +4,8 @@ import { List, ListItem } from "material-ui/List";
 import ContentSend from "material-ui/svg-icons/content/send";
 
 
-export default class ChatList extends React.Component {
-    render() {
+export default function ChatList() {
+    
         return (
             <List>
                 <Link to="/chat/1/">
@@ -19,6 +19,6 @@ export default class ChatList extends React.Component {
                 </Link>
             </List>
         )
-    }
+    
 }
 

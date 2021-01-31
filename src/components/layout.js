@@ -4,6 +4,7 @@ import Input from "./input";
 import ChatList from "./chatlist.jsx";
 import Header from "./header.jsx";
 import "../styles/styles.css"
+import { useParams } from "react-router-dom";
 
 export default function Layout () {
     const [messages, setMessages] = useState([
@@ -35,7 +36,7 @@ export default function Layout () {
     return (
         <>
             <div className="layout">
-                <Header chatId= {1}/>
+                <Header topicId={ useParams.topicId }/>
                 <div className="layout-canvas">
                     <div className="layout-left-side">
                         <ChatList/>
