@@ -2,8 +2,6 @@ import React, { useCallback } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import { List, ListItem } from "material-ui/List";
 import ContentSend from "material-ui/svg-icons/content/send";
-import Chat from "./chat";
-
 
 export default function ChatList() {
 
