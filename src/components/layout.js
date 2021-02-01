@@ -36,7 +36,7 @@ export default function Layout () {
     return (
         <>
             <div className="layout">
-                <Header topicId={ useParams.topicId }/>
+                <Header chatId={ useParams.chatId }/>
                 <div className="layout-canvas">
                     <div className="layout-left-side">
                         <ChatList/>
