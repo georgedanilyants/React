@@ -32,6 +32,10 @@ const path = require("path");
       },
       mode: "development",
       devServer: {
+        port: 8080,
+        historyApiFallback: {
+          index: "index.html"
+        },
         contentBase: path.join(__dirname, "public")
       }
     };
