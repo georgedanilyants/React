@@ -1,11 +1,14 @@
 import React, { useState, useMemo } from "react";
 import { Redirect, useParams} from "react-router-dom"
 
-export default function Header ({ chats }) {
+export default function Header ({ chatList }) {
     const { chatId } = useParams();
-    const chat = useMemo(() => chats.find(t => t.id === chatId), [chatId, chats]);
+    const selected = useMemo(
+            () => Object.keys(chatList).find((id) => id === chatId), 
+            [chatId, chatList]
+        );
 
-    if (!chat) {
+    if (!selected) {
         return (
             <Redirect to="/" />
         )
@@ -13,8 +16,7 @@ export default function Header ({ chats }) {
 
     return (
         <div className="header">
-            <span style={{ fontSize: "20px"}}>Чат {chat.id} </span>
+            <span style={{ fontSize: "20px"}}>Чат {chatList[selected].name}</span>
         </div>
-    )
-
+    );
 }

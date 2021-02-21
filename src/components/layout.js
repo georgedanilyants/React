@@ -4,7 +4,18 @@ import Input from "./input";
 import ChatList from "./chatlist.jsx";
 import Header from "./header.jsx";
 import "../styles/styles.css"
-import { useParams } from "react-router-dom";
+import { Route, useRouteMatch } from "react-router-dom";
+
+const initialChats = {
+    id1: {
+        id: "id1",
+        name: "Chat1",
+    },
+    id2: {
+        id: "id2",
+        name: "Chat2",
+    }
+}
 
 export default function Layout () {
     const [messages, setMessages] = useState([
@@ -33,22 +44,29 @@ export default function Layout () {
         }
     }, [messages, handleAddMessage]);
     
+    const [chatList, setChatList] = setState(initialChats);
+
+    const match = useRouteMatch();
+
     return (
         <>
-            <div className="layout">
-                <Header/>
-                <div className="layout-canvas">
-                    <div className="layout-left-side">
-                        <ChatList/>
-                    </div>
-                    <div className="layout-right-side">
-                        <div className="message-field">
-                            {messages.map(renderMessage)}
-                        </div>
-                        <Input onAddMessage={handleAddMessage} />
-                     </div>
+            <div className="layout-canvas">
+                <div className="layout-left-side">
+                    <ChatList chatList={chatList} url={match.url} />
                 </div>
+                    <Input onAddMessage={handleAddMessage} />
             </div>
+            <Switch>
+                <Route path={`/chat/:chatId`}>
+                    <div className="layout">
+                        <Header chatList={chatList}/>
+                        
+                    </div>
+                </Route>
+                <Route>
+
+                </Route>
+            </Switch>
         </>
     );
 }
